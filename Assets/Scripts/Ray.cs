@@ -8,6 +8,8 @@ public class Ray : MonoBehaviour
 
 	float baseScale;
 
+	internal Ray parentRay;
+
 	void Start()
 	{
 		baseScale = transform.localScale.y;
@@ -20,6 +22,10 @@ public class Ray : MonoBehaviour
 		if (Physics.Raycast(transform.position, transform.rotation * Vector3.up, out hitInfo))
 		{
 			distance = hitInfo.distance;
+			// TODO: Check for ray transparent
+			
+			IRayTarget target = hitInfo.collider.gameObject.GetComponent(typeof(IRayTarget)) as IRayTarget;
+			target.OnHit(this, hitInfo);
 		}
 		else
 		{

@@ -9,6 +9,7 @@ public class RaySource : MonoBehaviour
 	void Start()
 	{
 		Ray childRay = GameObject.Instantiate(ray).GetComponent<Ray>();
+		childRay.name = name + ":Ray";
 		childRay.transform.parent = transform;
 		childRay.transform.position = transform.position;
 		childRay.transform.rotation = transform.rotation;
