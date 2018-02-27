@@ -4,14 +4,22 @@ using UnityEngine;
 
 public class RaySource : MonoBehaviour
 {
-	public GameObject ray;
+	public Ray ray;
+	public float range = 10;
 
+	Ray childRay;
 	void Start()
 	{
-		Ray childRay = GameObject.Instantiate(ray).GetComponent<Ray>();
+		childRay = ray.CreateChildRay();
 		childRay.name = name + ":Ray";
+		childRay.maxDistance = range;
 		childRay.transform.parent = transform;
 		childRay.transform.position = transform.position;
 		childRay.transform.rotation = transform.rotation;
+	}
+
+	void Update()
+	{
+		childRay.maxDistance = range;
 	}
 }

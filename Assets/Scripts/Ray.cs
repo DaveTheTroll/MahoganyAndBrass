@@ -6,24 +6,32 @@ public class Ray : MonoBehaviour
 {
 	public float maxDistance = 1000;
 
-	float baseScale;
+	Ray parentRay;
+	internal int age;
 
-	internal Ray parentRay;
-
-	void Start()
+	internal Ray CreateChildRay()
 	{
-		baseScale = transform.localScale.y;
+		Ray child = Component.Instantiate<Ray>(this);
+		child.parentRay = this;
+		return child;
 	}
 
+	Ray Prefab
+	{
+		get
+		{
+			return parentRay == null ? this : parentRay.Prefab; // A prefab is the only Ray that has no parentRay.
+		}
+	}
 	void Update()
 	{
 		float distance;
 		RaycastHit hitInfo;
-		if (Physics.Raycast(transform.position, transform.rotation * Vector3.up, out hitInfo))
+		if (Physics.Raycast(transform.position, transform.rotation * Vector3.up, out hitInfo, maxDistance))
 		{
 			distance = hitInfo.distance;
 			// TODO: Check for ray transparent
-			
+
 			IRayTarget target = hitInfo.collider.gameObject.GetComponent(typeof(IRayTarget)) as IRayTarget;
 			target.OnHit(this, hitInfo);
 		}
@@ -31,6 +39,8 @@ public class Ray : MonoBehaviour
 		{
 			distance = maxDistance;
 		}
-		transform.localScale = new Vector3(transform.localScale.x, baseScale * distance, transform.localScale.z);
+		transform.localScale = new Vector3(transform.localScale.x / transform.lossyScale.x,
+			distance * transform.localScale.y / transform.lossyScale.y,
+			transform.localScale.z / transform.lossyScale.z);
 	}
 }

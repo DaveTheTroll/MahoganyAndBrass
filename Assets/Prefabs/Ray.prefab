@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4063587246213300}
   - component: {fileID: 114219670828839538}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Ray
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 33647970824546460}
   - component: {fileID: 136708695519105762}
   - component: {fileID: 23072690922440974}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
