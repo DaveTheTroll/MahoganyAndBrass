@@ -20,6 +20,9 @@ public class RaySource : MonoBehaviour
 
 	void Update()
 	{
-		childRay.maxDistance = range;
+		if (range > 0)
+		{
+			childRay.maxDistance = range;
+		}
 	}
 }
