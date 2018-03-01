@@ -33,7 +33,10 @@ public class Ray : MonoBehaviour
 			// TODO: Check for ray transparent
 
 			IRayTarget target = hitInfo.collider.gameObject.GetComponent(typeof(IRayTarget)) as IRayTarget;
-			target.OnHit(this, hitInfo);
+			if (target != null)
+			{
+				target.OnHit(this, hitInfo);
+			}
 		}
 		else
 		{

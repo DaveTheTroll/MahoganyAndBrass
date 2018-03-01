@@ -36,7 +36,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4019054224543406}
   - component: {fileID: 33647970824546460}
-  - component: {fileID: 136708695519105762}
   - component: {fileID: 23072690922440974}
   m_Layer: 2
   m_Name: Beam
@@ -125,16 +124,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDistance: 1000
---- !u!136 &136708695519105762
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1840905143767982}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
