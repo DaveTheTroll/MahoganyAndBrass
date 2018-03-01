@@ -23,7 +23,7 @@ public class Ray : MonoBehaviour
 			return parentRay == null ? this : parentRay.Prefab; // A prefab is the only Ray that has no parentRay.
 		}
 	}
-	void Update()
+	internal void Update()
 	{
 		float distance;
 		RaycastHit hitInfo;

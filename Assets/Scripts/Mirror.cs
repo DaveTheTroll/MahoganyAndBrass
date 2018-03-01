@@ -12,7 +12,6 @@ public class Mirror : MonoBehaviour, IRayTarget
 		if (!reflections.ContainsKey(ray))
 		{
 			Ray newRefln = ray.CreateChildRay();
-//			newRefln.transform.parent = transform;
 			newRefln.name = string.Format("{0}:{1}-Refln", ray.name, name);
 			reflections.Add(ray, newRefln);
 		}
@@ -24,6 +23,8 @@ public class Mirror : MonoBehaviour, IRayTarget
 		Vector3 direction = Vector3.Reflect(ray.transform.rotation * Vector3.up, hitInfo.normal);
 		refln.transform.rotation = Quaternion.FromToRotation(Vector3.up, direction);
 		refln.maxDistance = ray.maxDistance - hitInfo.distance;
+
+		refln.Update();
 	}
 
 	void Update()
@@ -34,7 +35,6 @@ public class Mirror : MonoBehaviour, IRayTarget
 			refln.age++;
 			if (refln.age >= 2)
 			{
-				Debug.LogFormat("Destroying: {0}", refln.name);
 				Component.Destroy(refln.gameObject);
 				reflections.Remove(ray);
 			}
