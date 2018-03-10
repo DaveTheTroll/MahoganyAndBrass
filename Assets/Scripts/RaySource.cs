@@ -1,28 +1,29 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class RaySource : MonoBehaviour
+namespace MahoganyAndBrass
 {
-	public Ray ray;
-	public float range = 10;
-
-	Ray childRay;
-	void Start()
+	public class RaySource : MonoBehaviour
 	{
-		childRay = ray.CreateChildRay();
-		childRay.name = name + ":Ray";
-		childRay.maxDistance = range;
-		childRay.transform.parent = transform;
-		childRay.transform.position = transform.position;
-		childRay.transform.rotation = transform.rotation;
-	}
+		public Ray ray;
+		public float range = 10;
 
-	void Update()
-	{
-		if (range > 0)
+		Ray childRay;
+		void Start()
 		{
+			childRay = ray.CreateChildRay();
+			childRay.name = name + ":Ray";
 			childRay.maxDistance = range;
+			childRay.transform.parent = transform;
+			childRay.transform.position = transform.position;
+			childRay.transform.rotation = transform.rotation;
+		}
+
+		void Update()
+		{
+			if (range > 0)
+			{
+				childRay.maxDistance = range;
+			}
 		}
 	}
 }

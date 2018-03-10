@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 
-public interface IRayTarget
+namespace MahoganyAndBrass
 {
-	void OnHit(Ray ray, RaycastHit hitInfo);
+	public interface IRayTarget
+	{
+		void OnHit(Ray ray, RaycastHit hitInfo);
+	}
 }

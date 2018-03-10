@@ -1,11 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class RayTargetTest : MonoBehaviour, IRayTarget
+namespace MahoganyAndBrass
 {
-	public void OnHit(Ray ray, RaycastHit hitInfo)
+	public class RayTargetTest : MonoBehaviour, IRayTarget
 	{
-		Debug.LogFormat("Hit! by {0}", ray.name);
+		public void OnHit(Ray ray, RaycastHit hitInfo)
+		{
+			Debug.LogFormat("Hit! by {0}", ray.name);
+		}
 	}
 }
